@@ -1,4 +1,4 @@
-const URL = "http://localhost:3000";
+const URL = "https://fin.skroy.ru/api";
 
 
 const main = () => {
@@ -66,8 +66,6 @@ const addEventIndustries = (okveds) => {
   const selectBranche = document.querySelector("#branche");
   selectBranche.addEventListener("change", (event) => {
     event.preventDefault();
-    // isBranche = true;
-    // disabledSelect();
     chooseOkvedsToSelect(okveds, selectBranche.value);
   });
 };
@@ -84,19 +82,11 @@ const addEventToForm = () => {
 };
 
 const getResult = async (sum, okved, region) => {
-  // const response = await fetch(
-  //   `https://fin.skroy.ru/api/prediction/?sum=${sum}&okved=${okved}&region=${region}`
-  // );
-  // const data = response.json();
-  renderResult({
-    noprofit: 0.0126411561562578,
-    year_0: 0.3825278134046773,
-    year_1: 0.05929825912081528,
-    year_2: 0.08478023463854684,
-    year_3: 0.0902250654844609,
-    year_4: 0.05801802514384321,
-    year_5: 0.2567844781156081,
-  });
+  const response = await fetch(
+    `${URL}/prediction/?sum=${sum}&okved=${okved}&region=${region}`
+  );
+  const data = response.json();
+  renderResult(data);
 };
 
 const renderResult = (result) => {

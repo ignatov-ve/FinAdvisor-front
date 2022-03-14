@@ -1,20 +1,11 @@
 const URL = "http://localhost:3000";
-let isLocation = false;
-let isBranche = false;
-let isOkvedEnabled = false;
+
 
 const main = () => {
   getRegions();
   getIndustries();
   getOkveds();
   addEventToForm();
-};
-
-const disabledSelect = () => {
-  if (isLocation && isBranche) {
-    isOkvedEnabled = true;
-    document.querySelector("#okved").disabled = false;
-  }
 };
 
 const getRegions = async () => {
@@ -43,7 +34,6 @@ const addRegionsToSelect = (regions) => {
     (region) =>
       (selectLocation.innerHTML += `<option value="${region.code}">${region.name}</option>`)
   );
-  addEventToRegion();
 };
 
 const addIndustriesToSelect = (industries) => {
@@ -59,23 +49,16 @@ const chooseOkvedsToSelect = (okveds, industry) => {
     (okved) => okved.industry_code === industry
   );
   okvedsToIndustry.sort((a, b) => a.name.localeCompare(b.name));
-  isOkvedEnabled ? addOkvedToselect(okvedsToIndustry) : "";
+  addOkvedToselect(okvedsToIndustry)
 };
 
 const addOkvedToselect = (okvedsToIndustry) => {
   const selectOkveds = document.querySelector("#okved");
+  selectOkveds.disabled = false;
   selectOkveds.innerHTML =
     '<option selected value="" disabled>Выберите оквэд</option>';
   okvedsToIndustry.forEach((okved) => {
-    selectOkveds.innerHTML += `<option value="${okved.okved}">${okved.name}</option>`;
-  });
-};
-
-const addEventToRegion = () => {
-  document.querySelector("#location").addEventListener("change", (event) => {
-    event.preventDefault();
-    isLocation = true;
-    disabledSelect();
+    selectOkveds.innerHTML += `<option value="${okved.okved}">${okved.okved} ${okved.name}</option>`;
   });
 };
 
@@ -83,8 +66,8 @@ const addEventIndustries = (okveds) => {
   const selectBranche = document.querySelector("#branche");
   selectBranche.addEventListener("change", (event) => {
     event.preventDefault();
-    isBranche = true;
-    disabledSelect();
+    // isBranche = true;
+    // disabledSelect();
     chooseOkvedsToSelect(okveds, selectBranche.value);
   });
 };

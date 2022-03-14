@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FA</title>
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <script src="./js/app.js" defer></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="wrapper">
+        <div class="header__nav">
+          <h1 class="header__nav__title"></h1>
+          <div class="header__nav__menu">
+            <div class="header__menu__about">
+              <p>О продукте</p>
+              <p>Контакты</p>
+            </div>
+            <div class="header__menu__regist">
+              <a href="#" class="header__btn">Войти</a>
+              <a href="#" class="header__btn">Регистрация</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="main__fin-adv">
+        <div class="wrapper">
+          <h1 class="main__fin-adv__title">Финансовый консультант</h1>
+          <h3 class="main__fin-adv__subtitle">
+            Определи срок окупаемости проекта
+          </h3>
+          <a href="#analysis" class="main__fin-adv__btn">Перейти к анализу</a>
+        </div>
+      </section>
+      <section class="main__form">
+        <div class="wrapper">
+          <h1 class="main__form__title" id="analysis">Даные для анализа</h1>
+          <form action="" class="main__form-fa" id="form">
+            <label for="location" class="form-label">Локация</label>
+            <select name="location" id="location" class="form-select" required>
+              <option selected value="" disabled>Выберите регион</option>
+            </select>
+            <label for="branche" class="form-label">Область деятельности</label>
+            <select name="" id="branche" class="form-select" required>
+              <option selected value="" disabled>Выберите отрасль</option>
+            </select>
+            <select name="" id="okved" class="form-select" disabled required>
+              <option selected value="" disabled>Выберите сначала отрасль</option>
+            </select>
+            <label for="equity" class="form-label">Собственный капитал</label>
+            <input
+              type="number"
+              class="form-fa__equti"
+              id="equity"
+              name=""
+              min="10000"
+              placeholder="10000"
+              required
+            />
+            <div class="form__buttons-group">
+              <div class="form__email">
+                <input
+                  type="email"
+                  class="form__form-email"
+                  placeholder="E-mail"
+                  id="form-email"
+                />
+                <label for="form-email" class="form__label-email"
+                  >Более подробная информация доступна после регистрации</label
+                >
+              </div>
+              <button class="form__submit" type="submit">Анализ</button>
+              <button class="form__reset" type="reset">Закрыть</button>
+            </div>
+          </form>
+          <div class="main__form__result hidden">
+            <h2 class="result__title">Результат анализа</h2>
+            <div class="result__block-date">
+              <h3 class="result__subtitle">Приблизительный срок окупаемости:</h3>
+              <h3 class="result__date"><span class="date">8</span> 
+               <span class="year"></span> </h3>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer__wrap-footer footer-title">
+        <div class="footer__title">FC</div>
+        <div class="footer__sosial">
+          <ul class="footer__sosial-list">
+            <li class="sosial-item">
+              <img src="./img/fb.svg" alt="" srcset="" />
+            </li>
+            <li class="sosial-item">
+              <img src="./img/inst.svg" alt="" srcset="" />
+            </li>
+            <li class="sosial-item">
+              <img src="./img/tw.svg" alt="" srcset="" />
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__contact">
+        <div class="footer__wrap-footer footer-contact">
+          <div class="footer__contact__item">
+            <h3 class="contact-title">О компании</h3>
+            <ul class="contact-list">
+              <li>О нас</li>
+              <li>Перевозчик</li>
+              <li>Мы нанимаем</li>
+              <li>Блог</li>
+            </ul>
+          </div>
+          <div class="footer__contact__item">
+            <h3 class="contact-title">Юристам</h3>
+            <ul class="contact-list">
+              <li>О нас</li>
+              <li>Перевозчик</li>
+              <li>Мы нанимаем</li>
+              <li>Блог</li>
+            </ul>
+          </div>
+          <div class="footer__contact__item">
+            <h3 class="contact-title">Функции</h3>
+            <ul class="contact-list">
+              <li>Бизнес-маркетинг</li>
+              <li>Пользовательская аналитика</li>
+              <li>Живой чат</li>
+              <li>Неограниченная поддержка</li>
+            </ul>
+          </div>
+          <div class="footer__contact__item">
+            <h3 class="contact-title">Ресурсы</h3>
+            <ul class="contact-list">
+              <li>IOS & Android</li>
+              <li>Посмотреть демо</li>
+              <li>Клиенты</li>
+              <li>API</li>
+            </ul>
+          </div>
+          <div class="footer__contact__item">
+            <h3 class="contact-title">Связь</h3>
+            <div class="footer__form">
+              <input type="email" placeholder="Ваша почта" id="email_footer" />
+              <button class="btn-subscribe">Подписаться</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

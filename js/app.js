@@ -85,7 +85,7 @@ const getResult = async (sum, okved, region) => {
   const response = await fetch(
     `${URL}/prediction/?sum=${sum}000&okved=${okved}&region=${region}`
   );
-  const data = response.json();
+  const data = await response.json();
   renderResult(data);
 };
 

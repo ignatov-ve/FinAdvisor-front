@@ -50,16 +50,23 @@
               <option selected value="" disabled>Выберите отрасль</option>
             </select>
             <select name="" id="okved" class="form-select" disabled required>
-              <option selected value="" disabled>Выберите сначала отрасль</option>
+              <option selected value="" disabled>
+                Выберите сначала отрасль
+              </option>
             </select>
-            <label for="equity" class="form-label">Собственный капитал</label>
+            <label for="equity" class="form-label"
+              >Собственный капитал
+              <span class="equity"
+                >(объём инвистиций вводится в тыс. рублей)</span
+              ></label
+            >
             <input
               type="number"
               class="form-fa__equti"
               id="equity"
               name=""
-              min="10000"
-              placeholder="10000"
+              min="10"
+              placeholder="Минимальная сумма 10 тыс."
               required
             />
             <div class="form__buttons-group">
@@ -81,9 +88,12 @@
           <div class="main__form__result hidden">
             <h2 class="result__title">Результат анализа</h2>
             <div class="result__block-date">
-              <h3 class="result__subtitle">Приблизительный срок окупаемости:</h3>
-              <h3 class="result__date"><span class="date">8</span> 
-               <span class="year"></span> </h3>
+              <h3 class="result__subtitle">
+                Приблизительный срок окупаемости:
+              </h3>
+              <h3 class="result__date">
+                <span class="date">8</span> <span class="year"></span>
+              </h3>
             </div>
           </div>
         </div>
@@ -91,7 +101,7 @@
     </main>
     <footer class="footer">
       <div class="footer__wrap-footer footer-title">
-        <div class="footer__title">FC</div>
+        <div class="footer__title"></div>
         <div class="footer__sosial">
           <ul class="footer__sosial-list">
             <li class="sosial-item">

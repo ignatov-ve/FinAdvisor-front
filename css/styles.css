@@ -59,6 +59,14 @@ h6 {
   font-display: swap;
 }
 
+@font-face{
+  font-family: "San Francisco Pro";
+  src: url("../fonts/SFProDisplay-UltralightItalic.woff.") format("woff");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
 html,
 body {
   font-size: 62.5%;
@@ -237,11 +245,20 @@ main {
   margin-bottom: 6rem;
   width: 100%;
   border: none;
-  box-shadow: inset 0px -1px 0px #adbdcc;
+  box-shadow: inset 0px -1px 0px var(--color-hover);
   height: 5.6rem;
 }
 select:disabled {
   opacity: 1;
+  
+}
+
+.equity{
+  display: inline-block;
+  color: var(--color-hover);
+  font-style: italic;
+  font-weight: 200;
+  font-size: 1rem;
 }
 
 input::-webkit-outer-spin-button,

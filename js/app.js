@@ -83,7 +83,7 @@ const addEventToForm = () => {
 
 const getResult = async (sum, okved, region) => {
   const response = await fetch(
-    `${URL}/prediction/?sum=${sum}&okved=${okved}&region=${region}`
+    `${URL}/prediction/?sum=${sum}000&okved=${okved}&region=${region}`
   );
   const data = response.json();
   renderResult(data);

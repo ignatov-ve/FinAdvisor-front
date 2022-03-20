@@ -61,8 +61,8 @@ h6 {
 
 @font-face{
   font-family: "San Francisco Pro";
-  src: url("../fonts/SFProDisplay-UltralightItalic.woff.") format("woff");
-  font-weight: 200;
+  src: url("../fonts/SFProDisplay-RegularItalic.woff") format("woff");
+  font-weight: 400;
   font-style: italic;
   font-display: swap;
 }
@@ -257,8 +257,8 @@ select:disabled {
   display: inline-block;
   color: var(--color-hover);
   font-style: italic;
-  font-weight: 200;
-  font-size: 1rem;
+  font-weight: 400;
+  font-size: 1.2rem;
 }
 
 input::-webkit-outer-spin-button,
@@ -357,6 +357,11 @@ input[type="number"] {
 
 .date,.year {
   display: inline-block;
+}
+
+.chart{
+  width: 60rem;
+  height: 30rem;
 }
 
 .footer {

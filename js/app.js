@@ -1,5 +1,5 @@
-const URL = "https://fin.skroy.ru/api";
-
+const URL = "https://fin.skroy.ru";
+const chart = {};
 
 const main = () => {
   getRegions();
@@ -49,7 +49,7 @@ const chooseOkvedsToSelect = (okveds, industry) => {
     (okved) => okved.industry_code === industry
   );
   okvedsToIndustry.sort((a, b) => a.name.localeCompare(b.name));
-  addOkvedToselect(okvedsToIndustry)
+  addOkvedToselect(okvedsToIndustry);
 };
 
 const addOkvedToselect = (okvedsToIndustry) => {
@@ -87,12 +87,14 @@ const getResult = async (sum, okved, region) => {
   );
   const data = await response.json();
   renderResult(data);
+  renderChart(data);
 };
 
 const renderResult = (result) => {
   let profit = "";
   let expectation = 0;
   for (key in result) {
+    chart[key] = result[key];
     if (result[key] > expectation) {
       profit = key;
       expectation = result[key];
@@ -112,7 +114,7 @@ const renderResult = (result) => {
   }
   document
     .querySelector(".main__form__result")
-    .scrollIntoView({ behavior: "smooth" });
+    .scrollIntoView({ behavior: "smooth", block: "center" });
 };
 
 const endingOfYear = (year) => {
@@ -123,6 +125,52 @@ const endingOfYear = (year) => {
   } else {
     return "лет";
   }
+};
+
+const renderChart = (chart) => {
+  const ctx = document.querySelector("#myChart");
+  const labels = [];
+  const backgroundColor = [];
+  const borderColor = [];
+
+  for (let label of Object.keys(chart)) {
+    if (label === "noprofit") {
+      labels.push("Не окупится");
+    } else {
+      labels.push(label.split("_")[1]);
+    }
+
+    const rgb = `${Math.floor(Math.random() * 256)},${Math.floor(
+      Math.random() * 256
+    )},${Math.floor(Math.random() * 256)}`;
+    backgroundColor.push(`rgba(${rgb},0.4)`);
+    borderColor.push(`rgb(${rgb})`);
+  }
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "Вероятность окупаемости по годам",
+        data: Object.values(chart),
+        backgroundColor,
+        borderColor,
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const myChart = new Chart(ctx, {
+    type: "bar",
+    data: data,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
 };
 
 main();

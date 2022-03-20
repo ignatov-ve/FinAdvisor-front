@@ -1,5 +1,4 @@
 const URL = "https://fin.skroy.ru";
-const chart = {};
 
 const main = () => {
   getRegions();

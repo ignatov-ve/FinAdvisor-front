@@ -93,7 +93,6 @@ const renderResult = (result) => {
   let profit = "";
   let expectation = 0;
   for (key in result) {
-    chart[key] = result[key];
     if (result[key] > expectation) {
       profit = key;
       expectation = result[key];

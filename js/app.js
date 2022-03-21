@@ -1,4 +1,4 @@
-const URL = "https://fin.skroy.ru";
+const URL = "https://fin.skroy.ru/api";
 
 const main = () => {
   getRegions();

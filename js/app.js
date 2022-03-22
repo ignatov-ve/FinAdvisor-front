@@ -1,5 +1,5 @@
 const URL = "https://fin.skroy.ru/api";
-const URLTest = "http://localhost:3000";
+// const URLTest = "http://localhost:3000";
 let myChart;
 
 const main = () => {
@@ -10,21 +10,21 @@ const main = () => {
 };
 
 const getRegions = async () => {
-  const response = await fetch(`${URLTest}/regions/`);
+  const response = await fetch(`${URL}/regions/`);
   const regions = await response.json();
   regions.sort((a, b) => a.name.localeCompare(b.name));
   addRegionsToSelect(regions);
 };
 
 const getIndustries = async () => {
-  const response = await fetch(`${URLTest}/industries/`);
+  const response = await fetch(`${URL}/industries/`);
   const industries = await response.json();
   industries.sort((a, b) => a.name.localeCompare(b.name));
   addIndustriesToSelect(industries);
 };
 
 const getOkveds = async () => {
-  const response = await fetch(`${URLTest}/okveds/`);
+  const response = await fetch(`${URL}/okveds/`);
   const okveds = await response.json();
   addEventIndustries(okveds);
 };
@@ -84,8 +84,7 @@ const addEventToForm = () => {
 
 const getResult = async (sum, okved, region) => {
   const response = await fetch(
-    `${URLTest}/result/`
-    // /prediction/?sum=${sum}000&okved=${okved}&region=${region}`
+    `${URL}/prediction/?sum=${sum}000&okved=${okved}&region=${region}`
   );
   const data = await response.json();
   renderResult(data);

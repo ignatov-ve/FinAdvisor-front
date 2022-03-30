@@ -1,5 +1,6 @@
 const URL = "https://fin.skroy.ru/api";
-
+// const URLTest = "http://localhost:3000";
+let myChart;
 
 const main = () => {
   getRegions();
@@ -49,7 +50,7 @@ const chooseOkvedsToSelect = (okveds, industry) => {
     (okved) => okved.industry_code === industry
   );
   okvedsToIndustry.sort((a, b) => a.name.localeCompare(b.name));
-  addOkvedToselect(okvedsToIndustry)
+  addOkvedToselect(okvedsToIndustry);
 };
 
 const addOkvedToselect = (okvedsToIndustry) => {
@@ -85,8 +86,9 @@ const getResult = async (sum, okved, region) => {
   const response = await fetch(
     `${URL}/prediction/?sum=${sum}000&okved=${okved}&region=${region}`
   );
-  const data = response.json();
+  const data = await response.json();
   renderResult(data);
+  renderChart(data);
 };
 
 const renderResult = (result) => {
@@ -104,6 +106,9 @@ const renderResult = (result) => {
   if (profit === "noprofit") {
     document.querySelector(".date").innerText = "Не окупится";
     document.querySelector(".year").innerText = "";
+  } else if (profit === "year_0") {
+    document.querySelector(".date").innerText = "&lt;1";
+    document.querySelector(".year").innerText = "года";
   } else {
     document.querySelector(".date").innerText = profit.split("_")[1];
     document.querySelector(".year").innerText = endingOfYear(
@@ -112,7 +117,7 @@ const renderResult = (result) => {
   }
   document
     .querySelector(".main__form__result")
-    .scrollIntoView({ behavior: "smooth" });
+    .scrollIntoView({ behavior: "smooth", block: "center" });
 };
 
 const endingOfYear = (year) => {
@@ -125,4 +130,56 @@ const endingOfYear = (year) => {
   }
 };
 
+const renderChart = (chart) => {
+  const ctx = document.querySelector("#myChart");
+  const labels = [];
+  const backgroundColor = [];
+  const borderColor = [];
+
+  for (let label of Object.keys(chart)) {
+    if (label === "noprofit") {
+      labels.push("Не окупится");
+    } else if (label === "year_0") {
+      labels.push(`&lt;1 года`);
+    } else {
+      labels.push(
+        `${label.split("_")[1]} ${endingOfYear(+label.split("_")[1])}`
+      );
+    }
+
+    const rgb = `${Math.floor(Math.random() * 256)},${Math.floor(
+      Math.random() * 256
+    )},${Math.floor(Math.random() * 256)}`;
+    backgroundColor.push(`rgba(${rgb},0.4)`);
+    borderColor.push(`rgb(${rgb})`);
+  }
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "Вероятность окупаемости по годам",
+        data: Object.values(chart),
+        backgroundColor,
+        borderColor,
+        borderWidth: 1,
+      },
+    ],
+  };
+  if (typeof myChart === "object") {
+    myChart.destroy();
+  }
+
+  myChart = new Chart(ctx, {
+    type: "bar",
+    data: data,
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+};
 main();

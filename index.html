@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -7,6 +7,7 @@
     <title>FA</title>
     <link rel="stylesheet" href="./css/normalize.css" />
     <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/modal.css" />
   </head>
   <body>
     <header class="header">
@@ -29,16 +30,16 @@
     <main>
       <section class="main__fin-adv">
         <div class="wrapper">
-          <h1 class="main__fin-adv__title">Финансовый консультант</h1>
+          <h1 class="main__fin-adv__title">Финансовый советник</h1>
           <h3 class="main__fin-adv__subtitle">
-            Определи срок окупаемости проекта
+            Определите срок окупаемости проекта
           </h3>
           <a href="#analysis" class="main__fin-adv__btn">Перейти к анализу</a>
         </div>
       </section>
       <section class="main__form">
         <div class="wrapper">
-          <h1 class="main__form__title" id="analysis">Даные для анализа</h1>
+          <h1 class="main__form__title" id="analysis">Данные для анализа</h1>
           <form action="" class="main__form-fa" id="form">
             <label for="location" class="form-label">Локация</label>
             <select name="location" id="location" class="form-select" required>
@@ -100,22 +101,6 @@
       </section>
     </main>
     <footer class="footer">
-      <div class="footer__wrap-footer footer-title">
-        <div class="footer__title"></div>
-        <div class="footer__sosial">
-          <ul class="footer__sosial-list">
-            <li class="sosial-item">
-              <img src="./img/fb.svg" alt="" srcset="" />
-            </li>
-            <li class="sosial-item">
-              <img src="./img/inst.svg" alt="" srcset="" />
-            </li>
-            <li class="sosial-item">
-              <img src="./img/tw.svg" alt="" srcset="" />
-            </li>
-          </ul>
-        </div>
-      </div>
       <div class="footer__contact">
         <div class="footer__wrap-footer footer-contact">
           <div class="footer__contact__item">
@@ -164,8 +149,37 @@
         </div>
       </div>
     </footer>
+    <!-- <div class="form-modal">
+      <div class="modal-overlay">
+        <div class="modal-window">
+          <div class="modal-header">
+            <span class="modal-title">1</span>
+            <span class="modal-close">&times;</span>
+          </div>
+          <form>
+            <div class="modal-body">
+              <input
+                type="email"
+                required
+                class="signup-in"
+                placeholder="E-mail"
+              />
+              <input
+                type="password"
+                required
+                class="signup-in"
+                placeholder="Пароль"
+              />
+            </div>
+            <div class="modal-footer">
+              <button class="header__btn btn">1</button>
+              <button class="header__btn">Закрыть</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
     <script src="./js/app.js"></script>
-    z
   </body>
 </html>

@@ -136,8 +136,12 @@ const renderChart = (chart) => {
   for (let label of Object.keys(chart)) {
     if (label === "noprofit") {
       labels.push("Не окупится");
+    } else if (label === "year_0") {
+      labels.push(`&lt;1 года`);
     } else {
-      labels.push(label.split("_")[1]);
+      labels.push(
+        `${label.split("_")[1]} ${endingOfYear(+label.split("_")[1])}`
+      );
     }
 
     const rgb = `${Math.floor(Math.random() * 256)},${Math.floor(

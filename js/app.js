@@ -106,6 +106,9 @@ const renderResult = (result) => {
   if (profit === "noprofit") {
     document.querySelector(".date").innerText = "Не окупится";
     document.querySelector(".year").innerText = "";
+  } else if (profit === "year_0") {
+    document.querySelector(".date").innerText = "&lt;1";
+    document.querySelector(".year").innerText = "года";
   } else {
     document.querySelector(".date").innerText = profit.split("_")[1];
     document.querySelector(".year").innerText = endingOfYear(
